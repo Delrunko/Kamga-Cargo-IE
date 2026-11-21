@@ -1,0 +1,171 @@
+/* ===== 1. Base ===== */
+:root{--g:#1f6b3a;--gd:#154d29;--r:#d62828;--y:#f2b705;--bg:#f1f4ee;--b:#0a6e8a;--ink:#1b1b1b;--line:#dde3da;--mute:#5f685c;--sh:0 1px 2px #0001,0 6px 18px #1f6b3a14}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45}
+h1,h2,h3{line-height:1.2}
+
+/* ===== 2. Structure : menu à gauche, contenu à droite ===== */
+.shell{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}
+.content{display:flex;flex-direction:column;min-height:100vh;min-width:0}
+.content main{flex:1;width:100%}
+.auth-shell{display:flex;flex-direction:column;min-height:100vh}
+.auth-shell .login{margin:12vh auto 24px}
+.auth-shell>.app-footer{margin-top:auto}
+main{max-width:1080px;margin:0 auto;padding:20px 24px}
+
+/* ===== 3. Menu latéral ===== */
+.side{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:4px;padding:18px 12px;color:#fff;overflow-y:auto;
+  background:var(--gd) repeating-linear-gradient(90deg,#0000 0 14px,#ffffff0f 14px 16px)}
+.side::after{content:"";margin-top:auto;flex:0 0 12px;border-radius:2px;background:linear-gradient(var(--r) 50%,var(--y) 50%)}
+.brand{display:flex;align-items:center;gap:10px;padding:4px 8px 18px;font-weight:800;font-size:18px}
+.brand i{font-style:normal;background:var(--y);color:var(--gd);border-radius:6px;padding:4px 8px}
+.brand-logo{width:42px;height:42px;object-fit:contain;background:#fff;border-radius:6px}
+.header-logo{width:38px;height:38px;object-fit:contain}
+.side button{display:flex;gap:10px;align-items:center;text-align:left;background:none;color:#e3f0e7;padding:11px 12px;border-radius:8px;box-shadow:none}
+.side button.on{background:#fff;color:var(--gd);font-weight:700}
+.side button:hover:not(.on){background:#ffffff1c;box-shadow:none}
+
+/* ===== 4. Barre du haut ===== */
+.top{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:12px 24px;background:#fff;border-bottom:1px solid var(--line)}
+.top h1{flex:1 1 200px;margin:0;font-size:21px}
+.chip{background:#eef3ec;border-radius:99px;padding:6px 12px;font-size:13px}
+
+/* ===== 5. Blocs et formulaires ===== */
+.card{display:block;width:100%;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px;box-shadow:var(--sh)}
+.card h2{margin:0 0 12px;font-size:18px}
+.card h3{margin:0 0 8px;font-size:15px}
+.panel{overflow:hidden}
+.tools{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.tools input{flex:1 1 240px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;align-items:end}
+.grid>button{align-self:end}
+input,select,textarea{width:100%;min-height:40px;padding:9px 10px;border:1px solid #b9c2b6;border-radius:8px;background:#fff;font:inherit}
+textarea{resize:vertical}
+.filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:0 0 14px;padding:12px;background:#fff;border:1px solid var(--line);border-radius:12px}
+.filters label,.card label{display:grid;gap:4px;font-size:13px;font-weight:600;color:var(--mute)}
+.filters input,.filters select{color:var(--ink);font-weight:400}
+
+/* ===== 6. Boutons ===== */
+button{min-height:40px;background:var(--g);color:#fff;border:0;border-radius:8px;padding:9px 14px;font:inherit;cursor:pointer;transition:background .2s,box-shadow .2s}
+button:hover{box-shadow:0 3px 10px #1f6b3a45}
+button.sec{background:#fff;color:var(--g);border:1px solid var(--g)}
+button.danger{background:var(--r);color:#fff}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.button-link:focus-visible{outline:3px solid var(--y)}
+.button-link{display:inline-flex;align-items:center;min-height:40px;background:var(--g);color:#fff;text-decoration:none;border-radius:8px;padding:9px 14px}
+.test-toggle{display:flex;align-items:center;gap:6px;font-size:13px}
+.test-toggle input{width:auto;min-height:0}
+
+/* ===== 7. Listes (colis, documents, clients) ===== */
+.colis{display:flex;gap:12px 16px;justify-content:space-between;align-items:center;flex-wrap:wrap;line-height:1.6;transition:border-color .2s}
+.colis:hover{border-color:#bccdb9}
+.colis>div:first-child{flex:1 1 320px;min-width:0}
+.acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.acts select{width:auto}
+.client-row{text-align:left;color:var(--ink);font-weight:400}
+.history-item{padding:10px 0;border-bottom:1px solid var(--line)}
+.history-item:last-child{border-bottom:0}
+.empty,.err{color:#777;text-align:center;padding:18px 0}
+.err{color:var(--r);text-align:left;padding:6px 0}
+
+/* ===== 8. Tableau de bord et rapports ===== */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:14px}
+.kpis .card{margin-bottom:0}
+.kpi{border-top:4px solid var(--g)}.kpi:nth-child(2){border-top-color:var(--y)}.kpi:nth-child(3){border-top-color:var(--r)}
+.kpi b{display:block;margin-bottom:4px;font-size:24px;color:var(--gd)}
+.payment-totals{display:flex;flex-wrap:wrap;gap:8px 18px;margin:12px 0}
+.report-area{background:#fff;padding:18px;border:1px solid var(--line);border-radius:12px}
+.chart{display:flex;gap:4px;align-items:flex-end;min-height:220px;padding:12px 0;overflow-x:auto;border-bottom:1px solid #aeb8ab}
+.chart-col{min-width:28px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;flex:1}
+.chart-col span{font-size:10px;max-width:60px;overflow:hidden}
+.chart-col div{width:70%;min-height:2px;background:var(--g);border-radius:4px 4px 0 0}
+.chart-col small{font-size:10px;white-space:nowrap}
+
+/* ===== 9. Divers (connexion, suivi, erreurs, pied de page, message) ===== */
+.login{max-width:380px;margin:12vh auto}.login form{display:grid;gap:10px}
+.stripe{height:8px;margin:-16px -16px 16px;border-radius:12px 12px 0 0;background:linear-gradient(90deg,var(--g) 60%,var(--y) 60% 80%,var(--r) 80%)}
+.tracking-page{max-width:680px;margin:6vh auto;padding:18px}
+.tracking-page header{display:flex;align-items:center;gap:14px}
+.tracking-status{display:inline-block;background:var(--g);color:#fff;padding:10px 16px;border-radius:30px;font-weight:700}
+.storage-error{max-width:680px;margin:10vh auto;padding:24px;background:#fff;border-left:6px solid var(--r);border-radius:8px}
+.settings-logo{display:block;max-width:180px;max-height:100px;object-fit:contain;margin-top:8px}
+.byte-preview{max-width:min(100%,520px);overflow-wrap:anywhere}
+.byte-preview code{display:block;white-space:normal;margin-top:8px}
+.app-footer{text-align:center;padding:14px 18px;border-top:1px solid var(--line);color:var(--mute);font-size:13px;background:#fff}
+.app-footer a{color:var(--g);font-weight:700;text-decoration:none}
+.app-footer a:hover{text-decoration:underline}
+.toast{position:fixed;left:0;right:0;bottom:24px;margin:auto;width:max-content;max-width:90vw;background:var(--gd);color:#fff;padding:10px 18px;border-radius:99px;border-left:6px solid var(--y);z-index:20}
+
+/* ===== 10. Adaptation : tablette puis téléphone ===== */
+@media(max-width:1100px){
+  .shell{grid-template-columns:200px minmax(0,1fr)}
+  main{padding:16px}.top{padding:12px 16px}
+}
+@media(max-width:760px){
+  .shell{display:block}
+  .side{position:fixed;top:auto;bottom:0;left:0;right:0;height:auto;flex-direction:row;gap:2px;overflow-x:auto;overflow-y:hidden;padding:6px 6px calc(6px + env(safe-area-inset-bottom));z-index:8;scroll-snap-type:x proximity;box-shadow:0 -2px 12px #0003}
+  .side::after,.brand{display:none}
+  .side button{flex:1 0 auto;min-width:64px;flex-direction:column;justify-content:center;gap:2px;padding:6px 8px;font-size:11px;scroll-snap-align:start}
+  main{padding:12px 12px 96px}
+  .top{padding:10px 12px}.top h1{font-size:18px}
+  .toast{bottom:92px}
+  .filters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .filters label{min-width:0}
+  .grid{grid-template-columns:1fr}
+  .grid>button{width:100%}
+  .colis .acts{width:100%;justify-content:stretch}
+  .colis .acts button,.colis .acts .button-link,.colis .acts select{flex:1;text-align:center;justify-content:center;min-height:44px}
+  .report-area{padding:10px}
+  .chart-col{min-width:24px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ===== 11. Documents (reçu, devis, QR, logo) : ne pas modifier ===== */
+.company-logo{max-width:100px;max-height:60px;object-fit:contain}
+.banner .company-logo{float:left;background:#fff;padding:3px}
+.doc-qr{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:12px}
+.doc-qr img{width:76px;height:76px}
+.doc-qr small{font-size:10px}
+.modal{position:fixed;inset:0;background:#000b;overflow:auto;padding:10px;z-index:9}
+.bar{display:flex;gap:8px;justify-content:center;margin-bottom:10px;flex-wrap:wrap}.bar select{width:auto}
+.sheet{background:#fff;color:#000;margin:0 auto;padding:16px;max-width:780px;font-size:13px;line-height:1.4;position:relative}
+.watermark{position:absolute;z-index:2;top:42%;left:10%;width:80%;text-align:center;transform:rotate(-25deg);border:8px solid #d62828;color:#d62828;font-size:clamp(48px,12vw,100px);font-weight:900;opacity:.28;pointer-events:none}
+.sheet.ticket{max-width:58mm;font-size:10px;padding:2mm}
+.recu{border:2px solid var(--b);color:#0a5c78}
+.rh{display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap}
+.logo{font-size:34px;font-weight:800;color:var(--b)}.logo small{display:block;font-size:10px;font-weight:600}
+.rc{flex:1;min-width:200px;text-align:center}.rc h2{margin:0;font-size:26px;letter-spacing:1px}.rc p{margin:2px 0;font-size:11px}
+.bpf{background:#bfe8f3;padding:6px 10px;border-radius:3px;text-align:center}
+.titre{display:flex;justify-content:center;gap:20px;align-items:center}.titre h3{margin:6px 0;font-size:22px}.no{color:var(--r);font-size:16px}
+.row{display:flex;gap:8px;border-bottom:1px dotted #0a5c78;padding:5px 0}.row b{min-width:140px}.row span{flex:1;color:#12306b;font-weight:600}
+.fait{display:flex;justify-content:flex-end;gap:28px;margin:12px 0}.sign{display:flex;justify-content:space-between;font-weight:700;margin-top:30px}
+.devis{border:2px solid var(--g)}
+.banner{background:var(--g);color:#fff;text-align:center;padding:8px;border-bottom:5px solid var(--r)}.banner h2{margin:0;font-size:28px;letter-spacing:2px}.banner p{margin:0;letter-spacing:3px}
+.dh{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:10px 0}.dh h3{margin:0;color:var(--r);font-size:22px}.ref{text-align:right;color:var(--r)}
+.contacts p{margin:2px 0}.clause{font-size:12px;padding-left:18px}
+table{width:100%;border-collapse:collapse;margin:10px 0}th,td{border:1px solid #000;padding:6px;text-align:center}
+.nb{font-size:12px}.devise{text-align:center;color:var(--r)}.chine{text-align:center;background:#d9f0d0;padding:4px;font-weight:700}
+/* Disposition fidèle aux modèles papier */
+.row-pair{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+.row-pair .row b{min-width:0;white-space:nowrap}
+.dh-main{flex:1;text-align:center}.dh-main p{margin:2px 0}
+.dc{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:8px 0}
+.dc .addr{flex:1 1 280px;margin:0}.dc .contacts{text-align:right}
+.tarif tbody th{text-align:left;width:26%}
+.arret{font-weight:700}.nb b{color:var(--r);text-decoration:underline}
+.sheet.ticket .row-pair{grid-template-columns:1fr}
+.sheet.ticket .dc{display:block}.sheet.ticket .dc .contacts{text-align:left}
+@media(max-width:760px){.doc-qr{flex-direction:column}}
+
+/* ===== 12. Impression : ne pas modifier ===== */
+@media print{
+  body *{visibility:hidden}
+  .sheet,.sheet *{visibility:visible}
+  .modal{position:static;overflow:visible;background:none;padding:0}
+  .sheet{position:absolute;left:0;top:0;width:100%;max-width:none;border:0}
+  .sheet.ticket{width:58mm}
+  body:has(.report-area) .report-area,body:has(.report-area) .report-area *{visibility:visible}
+  body:has(.report-area) .report-area{position:absolute;left:0;top:0;width:100%;border:0}
+  body:has(.print-closure) .print-closure,body:has(.print-closure) .print-closure *{visibility:visible}
+  body:has(.print-closure) .print-closure{position:absolute;left:0;top:0;width:100%;border:0}
+  .no-print{display:none!important}
+}
